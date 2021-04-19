@@ -22,4 +22,15 @@ public interface TailCall<T> {
                      .result();
     }
 
+    /**
+     * invoke without stream
+        default T invoke() {
+            TailCall<T> tailCall = this;
+            while(!tailCall.isComplete()) {
+                tailCall = tailCall.apply();
+            }
+            return tailCall.result();
+        }
+     */
+
 }
