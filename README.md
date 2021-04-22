@@ -5,3 +5,5 @@ functional programming concepts in Java.
 
 Each topic is covered in separate package.
 
+Special Thanks to Venkat Subramanium
+

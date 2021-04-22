@@ -4,11 +4,11 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
-public class Memoizer<T, U> {
+public class Memoize<T, U> {
 
   private final Map<T, U> cache = new ConcurrentHashMap<>();
 
-  private Memoizer() {}
+  private Memoize() {}
 
   @org.jetbrains.annotations.NotNull
   @org.jetbrains.annotations.Contract(pure = true)
@@ -17,6 +17,6 @@ public class Memoizer<T, U> {
   }
 
   public static <T, U> Function<T, U> memoize(final Function<T, U> function) {
-    return new Memoizer<T, U>().doMemoize(function);
+    return new Memoize<T, U>().doMemoize(function);
   }
 }
