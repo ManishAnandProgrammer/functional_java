@@ -12,15 +12,15 @@ public class ExecuteAround {
     }
 
     public static void main(String[] args) throws IOException {
-        String singleLineRead = processFile(bufferedReader -> bufferedReader.readLine());
+        String singleLineRead = processFile(BufferedReader::readLine);
         System.out.println(singleLineRead);
 
         String multipleLineRead = processFile(bufferedReader -> {
-            String read = "";
+            StringBuilder read = new StringBuilder();
             String currentString;
             while((currentString = bufferedReader.readLine()) != null)
-                read += currentString;
-            return read;
+                read.append(currentString);
+            return read.toString();
         });
         System.out.println(multipleLineRead);
     }
