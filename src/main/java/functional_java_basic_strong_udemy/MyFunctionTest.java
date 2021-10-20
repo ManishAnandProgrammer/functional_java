@@ -4,6 +4,7 @@ public class MyFunctionTest {
     public static void main(String[] args) {
         withoutChaining();
         withChaining();
+        multipleChaining();
     }
 
     private static void withoutChaining() {
@@ -23,5 +24,14 @@ public class MyFunctionTest {
         MyFunction<String, String> trimThanUpperCase = trimFunction.andThen(upperCaseFunction);
         String trimmedAndUpperCased = trimThanUpperCase.apply(" manish ");
         System.out.println(trimmedAndUpperCased);
+    }
+
+    private static void multipleChaining() {
+        MyFunction<String, Integer> stringParser = value -> Integer.parseInt(value);
+        MyFunction<Integer, Integer> doubleIt = value -> value * 2;
+
+        MyFunction<String, Integer> parseAndDoubleTwoTimes = stringParser.andThen(doubleIt).andThen(doubleIt);
+        Integer twoTimesDoubledValue = parseAndDoubleTwoTimes.apply("2");
+        System.out.println(twoTimesDoubledValue);
     }
 }
