@@ -7,11 +7,11 @@ public interface MyFunction<T, R> {
 
     default <V> MyFunction<T, V> andThen(MyFunction<? super R, ? extends V> next) {
         Objects.requireNonNull(next);
-        return value -> next.apply(this.apply(value));
+        return (T value) -> next.apply(this.apply(value));
     }
 
     default <V> MyFunction<V, R> compose(MyFunction<? super V, ? extends T> before) {
         Objects.requireNonNull(before);
-        return value -> apply(before.apply(value));
+        return (V value) -> apply(before.apply(value));
     }
 }
